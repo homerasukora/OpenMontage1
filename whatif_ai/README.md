@@ -29,7 +29,8 @@ python3 voice/tts_lines.py $M 16 1.3 voice
 python3 audio/sound.py
 ffmpeg -y -i audio/premaster.wav -af loudnorm=I=-14:TP=-1.5:LRA=7 -ar 48000 public/audio/mix.wav
 node scripts/stills.mjs out/st/x_ 60,300,900 0.5          # проверочные кадры
-npx remotion render src/index.ts WhatIfAI2027 out/video_noaudio.mp4 --codec h264 --crf 18 --gl=swangle
+./scripts/render_chunks.sh   # рендер кусками по 300 кадров, при обрыве продолжает с места остановки
+(cd out && ls chunks/c*.mp4 | sed 's/^/file /' > chunks.txt && ffmpeg -f concat -i chunks.txt -c copy video_noaudio.mp4)
 ffmpeg -i out/video_noaudio.mp4 -i public/audio/mix.wav -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -shortest out/whatif_ai_2027.mp4
 ```
 Новый эпизод: поменять `voice/lines.json`, перегенерировать голос, переписать `shots.ts` (каждый `add(...)` = один бит).
