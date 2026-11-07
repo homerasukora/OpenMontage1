@@ -1,0 +1,11 @@
+{
+  "name": "virus2027-whatif-ai",
+  "private": true,
+  "type": "module",
+  "scripts": { "studio": "remotion studio src/index.ts", "tsc": "tsc --noEmit" },
+  "dependencies": {
+    "remotion": "4.0.362", "@remotion/cli": "4.0.362", "@remotion/three": "4.0.362", "@remotion/bundler": "4.0.362", "@remotion/renderer": "4.0.362",
+    "react": "19.1.0", "react-dom": "19.1.0", "three": "0.178.0", "@react-three/fiber": "9.2.0", "@react-three/postprocessing": "3.0.4", "postprocessing": "6.37.6"
+  },
+  "devDependencies": { "typescript": "5.8.3", "@types/react": "19.1.8", "@types/three": "0.178.1" }
+}
